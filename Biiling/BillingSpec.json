@@ -1,0 +1,96 @@
+{
+    "server" : {
+        "type" : "array",
+        "description" : "서버에 대한 과금 정보를 수록하고 있음.",
+        "items" : {
+            "type" : "object",
+            "description" : "vm에 과금에 대한 정보 수록",
+            "properties" : {
+                "vm" : {
+                    "type" : "object",
+                    "properties" : {
+                        "vm name" : {
+                            "type" : "string",
+                            "description" : "vm의 이름을 의미함",
+                            "example" : "hello vm"
+                        },
+                        "location" : {
+                            "type" : "string",
+                            "description" : "서비스가 제공되는 장소를 의미함.",
+                            "enum" : ["D1(DX-M1)", "G2(KOR-Seoul M2)", "G1(기존 Zone)"]
+                        },
+                        "monthly pay amt" : {
+                            "type" : "array",
+                            "description" : "최초 생성부터 월별 요금", 
+                            "items" : {
+                                "type" : "object", 
+                                "properties" : {
+                                    "contract_info" :{
+                                        "type" : "object",
+                                        "properties": {
+                                            "contract term":{
+                                                "type" : "string",
+                                                "example" : "3 years"
+                                            },
+                                            "contract period":{
+                                                "type" : "string",
+                                                "format" : "yyyymmdd - yyyymmdd",
+                                                "example" : "20211110 - 20211129"
+                                            }   
+                                        }
+                                    },
+                                    "vCore" : {
+                                        "type" : "integer",
+                                        "description" : "Core 수를 의미"
+                                    },
+                                    "memory type" : {
+                                        "type" : "string",
+                                        "description" : "메모리 유형별로 구분",
+                                        "enum" : ["표준 Memory Server", "High Memory Server"]
+                                    },
+                                    "memory" : {
+                                        "type" : "integer",
+                                        "description" : "Memory 용량을 의미함. 단위는 Giga"
+                                    },
+                                    "pay date" : {
+                                        "type" : "string",
+                                        "format" : "YYYY-MM",
+                                        "example" : "2021-11"
+                                    },
+                                    "total usage time" : {
+                                        "type" : "integer",
+                                        "description" : "전체 사용 시간, 1초 이상 사용시 1시간으로 올림 처리",
+                                        "example" : 20
+                                    },
+                                    "total usage days" : {
+                                        "type" : "integer",
+                                        "description" : "전체 사용 일자를 의미함. 1초 이상 사용시 1일로 올림 처리",
+                                        "example" : 20
+                                    },
+                                    "termType" : {
+                                        "type" : "string",
+                                        "description" : "요금제를 의미함",
+                                        "enum" : ["OnDemand(time)","Reserved(Month)"]
+                                    },
+                                    "pay amt" : {
+                                        "type" : "integer",
+                                        "example" : 30000
+                                    }
+                                }
+                            }
+                        },
+                        "usage" : {
+                            "type" : "array",
+                            "description" : "서비스 시작부터 종료까지의 사용시간에 대한 근거",
+                            "items": {
+                                "type" : "string",
+                                "description" : "VM의 생성일부터 시작하는 시작 정지 이력을 의미함.",
+                                "format" : "yyyy-mm-dd hh:mm ~ yyyy-mm-dd hh:mm"    
+                            }
+                        }
+                    }
+                }
+            }
+        }    
+    }
+}
