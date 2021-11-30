@@ -74,10 +74,8 @@
                             "example": "2021-11"
                         }
                     }
-
                 }
             }
-            
         }
     },
     "useservicelistaccountsresponse": {
@@ -113,7 +111,6 @@
                         "example": "pay@kt.com"
                     }
                 }
-                
             }
         }
     },
@@ -130,7 +127,7 @@
                         "service": {
                             "type" : "string", 
                             "desciprion" : "서비스 이름",
-                            "enum" : ["ucloud server"],
+                            "enum" : ["server","db","cdn (cdn 3.0)","storage","loadbalancer","waf","managed service","gslb","nas"],
                             "example" : "ucloud server"
                         },
                         "mdcode": {
@@ -169,7 +166,7 @@
             },
             "serverserviceinfo": {
                 "type" : "array",
-                "description" : "서버 서비스와 관련된 과금 관련 정보를 조회",
+                "description" : "전체 서비스와 관련된 과금 관련 정보를 조회",
                 "items":{
                     "type" : "object",
                     "properties" : {
@@ -212,7 +209,6 @@
                         }
                     }
                 }
-                
             }
         }
     },
